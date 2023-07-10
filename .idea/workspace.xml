@@ -13,7 +13,6 @@
       <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Screen/Search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Search.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/api/CallApi.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/CallApi.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api/spotify_api.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Music/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Music/.metadata" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Music/README.md" beforeDir="false" />
@@ -372,13 +371,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/api/CallApi.dart</url>
-          <line>22</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
       </default-breakpoints>

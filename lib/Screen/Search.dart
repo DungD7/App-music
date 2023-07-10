@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../api/CallApi.dart';
 import '../model/SongModelEntity.dart';
+import '../model2/SongModel2.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -10,7 +11,7 @@ class Search extends StatefulWidget {
   State<Search> createState() => _SearchState();
 }
 class _SearchState extends State<Search> {
-  List<Song> musicData = [];
+  SongModel? musicData;
   @override
   void initState() {
     super.initState();
@@ -54,13 +55,11 @@ class _SearchState extends State<Search> {
                 ),
                 ),
               ),
-              Container(
-                child: Text('${musicData.length}',
-                  style: TextStyle(
-                  fontSize: 27,
-                  color: Colors.white,
-                ),),
-              )
+              Text('${musicData?.song?.length}',
+                style:const TextStyle(
+                fontSize: 27,
+                color: Colors.white,
+              ),)
             ],
           ),
         )
