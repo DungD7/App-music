@@ -1,9 +1,6 @@
 import 'package:app_music/model/SongModel.dart';
 import 'package:flutter/material.dart';
-
 import '../api/CallApi.dart';
-import '../model/SongModelEntity.dart';
-import '../model2/SongModel2.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});

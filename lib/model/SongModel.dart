@@ -96,12 +96,14 @@ class Song {
     thumbnail = json['thumbnail'];
     duration = json['duration'];
     total = json['total'];
-    rankNum = json['rank_num'];
+    if (json['rank_num'] != null) {
+      rankNum = json['rank_num'].toString();
+    }
     rankStatus = json['rank_status'];
     artist =
     json['artist'] != null ? Artist.fromJson(json['artist']) : null;
     position = json['position'];
-    order = json['order'];
+    order = json['order'].toString();
     album = json['album'] != null ? Album.fromJson(json['album']) : null;
     mvLink = json['mv_link'];
   }
