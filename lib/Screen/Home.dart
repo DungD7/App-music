@@ -14,7 +14,6 @@ class Home extends StatelessWidget {
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -38,69 +37,40 @@ class Home extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10,),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                      'Recently played',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
+                nameListView(name: 'Trending Now'),
                 const SuggestionList(),
                 const SizedBox(height: 10,),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    'Shows to try',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                const SuggestionList(),
-                const SizedBox(height: 20,),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    'Popular radio',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                const SuggestionList(),
-                const SizedBox(height: 10,),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    'Recently played',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                const SuggestionList(),
-                const SizedBox(height: 10,),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    'Recently played',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                const SuggestionList(),
+                //const SuggestionList(),
               ],
             ),
           ),
         ),
+    );
+  }
+}
+
+class nameListView extends StatelessWidget {
+  String name;
+  nameListView({
+    required this.name,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Text(
+            name,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+      ),
     );
   }
 }

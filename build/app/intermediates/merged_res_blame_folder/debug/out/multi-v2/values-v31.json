@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.app_music.app-mergeDebugResources-9:/values-v31/values-v31.xml",
+            "outputFile": "com.example.app_music.app-mergeDebugResources-14:/values-v31/values-v31.xml",
             "map": [
                 {
                     "source": "D:\\university\\FLUTTER\\AppMusic\\android\\app\\src\\main\\res\\values-v31\\styles.xml",

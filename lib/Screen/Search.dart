@@ -1,6 +1,8 @@
 import 'package:app_music/model/SongModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../api/CallApi.dart';
+import 'PlayMusic.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -9,12 +11,23 @@ class Search extends StatefulWidget {
 }
 class _SearchState extends State<Search> {
   SongModel? musicData;
+  List<Song>? displayList;
+
+
+  void updateList(String value) {
+    setState(() {
+      displayList = musicData?.song?.where((element) =>
+          element.name!.toLowerCase().contains(value.toLowerCase())).toList();
+    });
+  }
+  // use data from api (List <Song>)
   @override
   void initState() {
     super.initState();
     CallApi.fetchApi().then((data) {
       setState(() {
         musicData = data;
+        displayList = musicData?.song;
       });
     });
   }
@@ -36,27 +49,65 @@ class _SearchState extends State<Search> {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
                 child: TextField(
-                  decoration: InputDecoration(
+                  onChanged: (value) => updateList(value),
+                  decoration: const InputDecoration(
                     fillColor: Colors.white,
                     border: OutlineInputBorder(),
                     labelText: 'Search',
                     prefixIcon: Icon(Icons.search_outlined),
                     prefixIconColor: Colors.white,
                   ),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 17
                 ),
                 ),
               ),
-              Text('${musicData?.song?.length}',
-                style:const TextStyle(
-                fontSize: 27,
-                color: Colors.white,
-              ),)
+              const SizedBox(height: 20,),
+              Expanded(
+                  child: (displayList == null)?
+                  const SpinKitCircle(
+                    color: Colors.green,
+                    size: 50,
+                  ):
+                  ListView.builder(
+                    itemCount: displayList?.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        onTap: () {
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => PlayMusic(songSelected: displayList![index])));
+                        },
+                        title: Text(
+                          '${displayList?[index].name}',
+                          style:const TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                          ),
+                        ),
+                        subtitle: Text(
+                          '${displayList?[index].artistsNames}',
+                          style:const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 12,
+                          ),
+                        ),
+                        trailing: Text(
+                          '${displayList?[index].total}',
+                          style:const TextStyle(
+                            color: Colors.greenAccent,
+                            //fontSize: 15,
+                          ),
+                        ),
+                        leading: Image.network('${displayList?[index].thumbnail}'
+                        ),
+                      );
+                    }
+                  )
+              )
             ],
           ),
         )

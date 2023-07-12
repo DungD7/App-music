@@ -8,12 +8,10 @@ class CallApi {
 
   static Future<SongModel?> fetchApi() async {
     final response = await http.get(Uri.parse(url));
-    var data = jsonDecode(response.body);
     if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
       Map<String, dynamic> songModelMap = data['data'];
       listData = SongModel.fromJson(songModelMap);
-      //int? x = listData?.song?.length;
-      //print(listData?.song?[1].link.toString());
       return listData;
     } else {
       throw Exception('Failed to load data');
