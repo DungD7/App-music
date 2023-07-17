@@ -1,10 +1,27 @@
+import 'package:app_music/api/CallApiSpotify.dart';
+import 'package:app_music/model/playlistsModel.dart';
 import 'package:flutter/material.dart';
 
 
 
-class Library extends StatelessWidget {
+class Library extends StatefulWidget {
   const Library({super.key});
 
+  @override
+  State<Library> createState() => _LibraryState();
+}
+
+class _LibraryState extends State<Library> {
+  PlaylistsModel? playLists;
+  @override
+  void initState() {
+    CallApiSpotify.fetchApiPlaylists().then((data) {
+      setState(() {
+        playLists = data;
+      });
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,9 +44,9 @@ class Library extends StatelessWidget {
                     ),
                     child: const  Center(child:Text("D")),
                   ),
-                  const Text(
-                    'Your library',
-                    style: TextStyle(
+                  Text(
+                    '${playLists?.playlists?.items?.length}',
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 27
                     ),

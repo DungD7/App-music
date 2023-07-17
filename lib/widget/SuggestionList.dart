@@ -1,10 +1,10 @@
 
-import 'package:app_music/api/CallApi.dart';
+import 'package:app_music/api/CallApiSpotify.dart';
+import 'package:app_music/model/playlistsModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../model/SongModel.dart';
-import 'ItemMusic.dart';
+import 'ItemPlaylist.dart';
 
 class SuggestionList extends StatefulWidget {
   const SuggestionList({
@@ -16,14 +16,14 @@ class SuggestionList extends StatefulWidget {
 }
 
 class _SuggestionListState extends State<SuggestionList> {
-  SongModel? musicData;
+  PlaylistsModel? playlistsData;
 
   @override
   void initState() {
-    CallApi.fetchApi().then((data){
+    CallApiSpotify.fetchApiPlaylists().then((data){
       setState(() {
         if(data!= null) {
-          musicData = data;
+          playlistsData = data;
         }
       });
     });
@@ -35,7 +35,7 @@ class _SuggestionListState extends State<SuggestionList> {
       scrollDirection: Axis.horizontal,
       child: SizedBox(
         height: 170,
-        child: (musicData == null)?
+        child: (playlistsData == null)?
         const Align(
           alignment: Alignment.center,
           child: SpinKitCircle(
@@ -46,9 +46,9 @@ class _SuggestionListState extends State<SuggestionList> {
         ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemCount: 15,
+          itemCount: 5,
           itemBuilder: (context, index){
-            return ItemMusic(song: musicData!.song![index]);
+            return ItemMusic(items: playlistsData!.playlists!.items![index]);
           }
         ),
       ),

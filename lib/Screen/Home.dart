@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import '../widget/SuggestionList.dart';
-
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -10,48 +8,48 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-          color: Colors.black,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(15),
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.green
-                      ),
-                      child: const  Center(child:Text("D")),
-                    ),
-                    const Text(
-                      'Spotify',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 27
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10,),
-                nameListView(name: 'Trending Now'),
-                const SuggestionList(),
-                const SizedBox(height: 10,),
-                //const SuggestionList(),
-              ],
-            ),
+        color: Colors.black,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(15),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.green),
+                    child: const Center(child: Text("D")),
+                  ),
+                  const Text(
+                    'Spotify',
+                    style: TextStyle(color: Colors.white, fontSize: 27),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              NameListView(name: 'Trending Now'),
+              const SuggestionList(),
+              const SizedBox(
+                height: 10,
+              ),
+              //const SuggestionList(),
+            ],
           ),
         ),
+      ),
     );
   }
 }
 
-class nameListView extends StatelessWidget {
+class NameListView extends StatelessWidget {
   String name;
-  nameListView({
+  NameListView({
     required this.name,
     super.key,
   });
@@ -63,18 +61,11 @@ class nameListView extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Text(
-            name,
+          name,
           style: const TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.bold
-          ),
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
     );
   }
 }
-
-
-
-

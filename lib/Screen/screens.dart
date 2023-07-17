@@ -1,6 +1,7 @@
 import 'package:app_music/Screen/Home.dart';
 import 'package:app_music/Screen/Search.dart';
 import 'package:app_music/Screen/library.dart';
+import 'package:app_music/Screen/playlistScreen.dart';
 import 'package:flutter/material.dart';
 
 

@@ -78,8 +78,8 @@ class _SearchState extends State<Search> {
                     itemBuilder: (context, index) {
                       return ListTile(
                         onTap: () {
-                          Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => PlayMusic(songSelected: displayList![index])));
+                          /*Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => PlayMusic(songSelected: displayList![index])));*/
                         },
                         title: Text(
                           '${displayList?[index].name}',
