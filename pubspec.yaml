@@ -16,14 +16,19 @@ dependencies:
   cupertino_icons: ^1.0.2
   just_audio: ^0.9.34
   dio: ^5.2.1+1
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.3.1
   http: ^1.1.0
   miniplayer: ^1.0.1
+  sliding_up_panel2: ^3.3.0+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+
+
 flutter_native_splash:
   android: true
   ios: true
