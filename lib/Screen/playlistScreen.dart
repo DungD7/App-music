@@ -1,8 +1,9 @@
 import 'package:app_music/api/CallApiSpotify.dart';
 import 'package:app_music/model/ListSongModel.dart';
-import 'package:app_music/widget/MiniPlayer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import '../widget/MiniPlayer.dart';
 
 ValueNotifier<Items?> currentlyPlaying = ValueNotifier(null);
 
@@ -121,7 +122,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
             ),
             (selectedSong == null)
                 ? Container()
-                : MiniPlayer(selectedSong: selectedSong!)
+                : PlayMusicScreen(selectedSong: currentlyPlaying)
           ],
         ),
       ),

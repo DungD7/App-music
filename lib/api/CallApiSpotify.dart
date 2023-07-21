@@ -11,7 +11,7 @@ class CallApiSpotify {
       "https://api.spotify.com/v1/search?q=Low%20G&type=playlist&market=VN";
   static String urlToken = 'https://accounts.spotify.com/api/token';
   static String token =
-      'BQBzh6IcDR3X2OEc0p2M5YUa7AptI4NwCMzY81QEQlfC71HvKWZzz6-PcDG4U9nPEdKbdWFExr6UDNtIkiMFtq2LnhwZywj1AK3ClodFciCCWAdlK6k';
+      'BQC9LIS6JrGzsLrLeIcf6y5GKj1RJUPlSYzJL2ushCOUfqKw1MoLTsWb_AMfB8rWsLTiBvtL7zSM5-c45ebjeZydD4EzeoDTR3SxpO3ycs2WYRg3Jhs';
   static PlaylistsModel? dataPlaylists;
   static ListSongModel? dataListSong;
 

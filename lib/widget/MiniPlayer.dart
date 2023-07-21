@@ -4,25 +4,26 @@ import 'package:miniplayer/miniplayer.dart';
 
 import '../model/ListSongModel.dart';
 
-final MiniplayerController controller = MiniplayerController();
-
-class MiniPlayer extends StatefulWidget {
-  Items? selectedSong;
-  MiniPlayer({required this.selectedSong, super.key});
+class PlayMusicScreen extends StatefulWidget {
+  ValueNotifier<Items?> currentlyPlaying;
+  PlayMusicScreen({required this.currentlyPlaying, super.key});
 
   @override
-  State<MiniPlayer> createState() => _MiniPlayerState();
+  State<PlayMusicScreen> createState() => _PlayMusicScreenState();
 }
 
-class _MiniPlayerState extends State<MiniPlayer> {
+class _PlayMusicScreenState extends State<PlayMusicScreen> {
   final _player = AudioPlayer();
   bool isPlaying = true;
   bool isChangeVolume = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
+  Items? selectedSong;
+
   @override
   void initState() {
     super.initState();
+    selectedSong = widget.currentlyPlaying?.addListener(() => {});
     _musicInit();
   }
 
@@ -60,10 +61,10 @@ class _MiniPlayerState extends State<MiniPlayer> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("selectedSong${widget.selectedSong?.track?.name}");
     return Miniplayer(
       elevation: 4,
       minHeight: 70,
-      controller: controller,
       curve: Curves.easeOut,
       maxHeight: MediaQuery.of(context).size.height,
       builder: (height, percentage) {
