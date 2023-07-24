@@ -11,7 +11,7 @@ class CallApiSpotify {
       "https://api.spotify.com/v1/search?q=Low%20G&type=playlist&market=VN";
   static String urlToken = 'https://accounts.spotify.com/api/token';
   static String token =
-      'BQC9LIS6JrGzsLrLeIcf6y5GKj1RJUPlSYzJL2ushCOUfqKw1MoLTsWb_AMfB8rWsLTiBvtL7zSM5-c45ebjeZydD4EzeoDTR3SxpO3ycs2WYRg3Jhs';
+      'BQC-MW7JNyM837oAqG9VG-x9Vbu0Nd-gxkk0zYexTQHdy9qpPNTcepqDBhmDZRNMmjOd5mDvntsO_tELKcf2UXhyOSoqeAbp4pr9Ng8WhKhUlAzk_jA';
   static PlaylistsModel? dataPlaylists;
   static ListSongModel? dataListSong;
 
@@ -28,7 +28,6 @@ class CallApiSpotify {
   }
 
   static Future<ListSongModel?> fetchApiListSong(String urlListSong) async {
-    //token = getToken().toString();
     final response = await http.get(Uri.parse(urlListSong),
         headers: {'Authorization': 'Bearer $token'});
     if (response.statusCode == 200) {

@@ -33,9 +33,15 @@
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk.sha1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/PlayMusic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/PlayMusic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Search.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Screen/playlistScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/playlistScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/api/CallApiSpotify.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/CallApiSpotify.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/MiniPlayer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/MiniPlayer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated/assets.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/ListSongModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/ListSongModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/MiniPlayer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/PlayMusicScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/SuggestionList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/SuggestionList.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Music/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Music/.metadata" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Music/README.md" beforeDir="false" />
@@ -824,6 +830,8 @@
       <change beforePath="$PROJECT_DIR$/../play_music/windows/runner/utils.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../play_music/windows/runner/win32_window.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../play_music/windows/runner/win32_window.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_api/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../request_api/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_api/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../request_api/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -844,11 +852,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/FLUTTER/flutter/packages/flutter/lib/src/widgets/framework.dart" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/android/app_music_android.iml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/Screen/PlayMusic.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/Screen/Search.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/Screen/library.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/api/CallApi.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/model/SongModel.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/widget/PlayMusic.dart" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -865,9 +873,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "D:/university/FLUTTER/AppMusic",
+    "last_opened_file_path": "D:/university/FLUTTER/request_api",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",

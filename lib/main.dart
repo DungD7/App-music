@@ -1,14 +1,11 @@
-import 'package:app_music/Screen/PlayMusic.dart';
 import 'package:app_music/Screen/screens.dart';
 import 'package:flutter/material.dart';
-
-import 'Screen/Home.dart';
 
 Future<void> main() async {
   runApp(const MyApp());
 }
 
- class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -25,4 +22,3 @@ Future<void> main() async {
     );
   }
 }
-

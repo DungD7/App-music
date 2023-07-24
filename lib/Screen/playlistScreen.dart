@@ -3,9 +3,7 @@ import 'package:app_music/model/ListSongModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../widget/MiniPlayer.dart';
-
-ValueNotifier<Items?> currentlyPlaying = ValueNotifier(null);
+import 'PlayMusicScreen.dart';
 
 class PlaylistScreen extends StatefulWidget {
   String urlListSong;
@@ -17,7 +15,7 @@ class PlaylistScreen extends StatefulWidget {
 
 class _PlaylistScreenState extends State<PlaylistScreen> {
   ListSongModel? listSongData;
-  Items? selectedSong;
+  ItemSongs? selectedSong;
 
   @override
   void initState() {
@@ -122,7 +120,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
             ),
             (selectedSong == null)
                 ? Container()
-                : PlayMusicScreen(selectedSong: currentlyPlaying)
+                : PlayMusicScreen(selectedSong: selectedSong)
           ],
         ),
       ),

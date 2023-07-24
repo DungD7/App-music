@@ -46,7 +46,7 @@ class _SuggestionListState extends State<SuggestionList> {
             : ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: 5,
+                itemCount: 20,
                 itemBuilder: (context, index) {
                   return ItemMusic(
                       items: playlistsData!.playlists!.items![index]);

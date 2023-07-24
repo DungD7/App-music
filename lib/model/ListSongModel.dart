@@ -8,7 +8,7 @@ class ListSongModel {
   List<Images>? images;
   String? name;
   Owner? owner;
-  Null? primaryColor;
+  String? primaryColor;
   bool? public;
   String? snapshotId;
   Tracks? tracks;
@@ -17,20 +17,20 @@ class ListSongModel {
 
   ListSongModel(
       {this.collaborative,
-        this.description,
-        this.externalUrls,
-        this.followers,
-        this.href,
-        this.id,
-        this.images,
-        this.name,
-        this.owner,
-        this.primaryColor,
-        this.public,
-        this.snapshotId,
-        this.tracks,
-        this.type,
-        this.uri});
+      this.description,
+      this.externalUrls,
+      this.followers,
+      this.href,
+      this.id,
+      this.images,
+      this.name,
+      this.owner,
+      this.primaryColor,
+      this.public,
+      this.snapshotId,
+      this.tracks,
+      this.type,
+      this.uri});
 
   ListSongModel.fromJson(Map<String, dynamic> json) {
     collaborative = json['collaborative'];
@@ -54,8 +54,7 @@ class ListSongModel {
     primaryColor = json['primary_color'];
     public = json['public'];
     snapshotId = json['snapshot_id'];
-    tracks =
-    json['tracks'] != null ? Tracks.fromJson(json['tracks']) : null;
+    tracks = json['tracks'] != null ? Tracks.fromJson(json['tracks']) : null;
     type = json['type'];
     uri = json['uri'];
   }
@@ -108,7 +107,7 @@ class ExternalUrls {
 }
 
 class Followers {
-  Null? href;
+  String? href;
   int? total;
 
   Followers({this.href, this.total});
@@ -136,11 +135,11 @@ class Owner {
 
   Owner(
       {this.displayName,
-        this.externalUrls,
-        this.href,
-        this.id,
-        this.type,
-        this.uri});
+      this.externalUrls,
+      this.href,
+      this.id,
+      this.type,
+      this.uri});
 
   Owner.fromJson(Map<String, dynamic> json) {
     displayName = json['display_name'];
@@ -169,28 +168,28 @@ class Owner {
 
 class Tracks {
   String? href;
-  List<Items>? items;
+  List<ItemSongs>? items;
   int? limit;
   String? next;
   int? offset;
-  Null? previous;
+  String? previous;
   int? total;
 
   Tracks(
       {this.href,
-        this.items,
-        this.limit,
-        this.next,
-        this.offset,
-        this.previous,
-        this.total});
+      this.items,
+      this.limit,
+      this.next,
+      this.offset,
+      this.previous,
+      this.total});
 
   Tracks.fromJson(Map<String, dynamic> json) {
     href = json['href'];
     if (json['items'] != null) {
-      items = <Items>[];
+      items = <ItemSongs>[];
       json['items'].forEach((v) {
-        items!.add(Items.fromJson(v));
+        items!.add(ItemSongs.fromJson(v));
       });
     }
     limit = json['limit'];
@@ -215,27 +214,26 @@ class Tracks {
   }
 }
 
-class Items {
+class ItemSongs {
   String? addedAt;
   AddedBy? addedBy;
   bool? isLocal;
-  Null? primaryColor;
+  String? primaryColor;
   Track? track;
   VideoThumbnail? videoThumbnail;
 
-  Items(
+  ItemSongs(
       {this.addedAt,
-        this.addedBy,
-        this.isLocal,
-        this.primaryColor,
-        this.track,
-        this.videoThumbnail});
+      this.addedBy,
+      this.isLocal,
+      this.primaryColor,
+      this.track,
+      this.videoThumbnail});
 
-  Items.fromJson(Map<String, dynamic> json) {
+  ItemSongs.fromJson(Map<String, dynamic> json) {
     addedAt = json['added_at'];
-    addedBy = json['added_by'] != null
-        ? AddedBy.fromJson(json['added_by'])
-        : null;
+    addedBy =
+        json['added_by'] != null ? AddedBy.fromJson(json['added_by']) : null;
     isLocal = json['is_local'];
     primaryColor = json['primary_color'];
     track = json['track'] != null ? Track.fromJson(json['track']) : null;
@@ -317,24 +315,24 @@ class Track {
 
   Track(
       {this.album,
-        this.artists,
-        this.availableMarkets,
-        this.discNumber,
-        this.durationMs,
-        this.episode,
-        this.explicit,
-        this.externalIds,
-        this.externalUrls,
-        this.href,
-        this.id,
-        this.isLocal,
-        this.name,
-        this.popularity,
-        this.previewUrl,
-        this.track,
-        this.trackNumber,
-        this.type,
-        this.uri});
+      this.artists,
+      this.availableMarkets,
+      this.discNumber,
+      this.durationMs,
+      this.episode,
+      this.explicit,
+      this.externalIds,
+      this.externalUrls,
+      this.href,
+      this.id,
+      this.isLocal,
+      this.name,
+      this.popularity,
+      this.previewUrl,
+      this.track,
+      this.trackNumber,
+      this.type,
+      this.uri});
 
   Track.fromJson(Map<String, dynamic> json) {
     album = json['album'] != null ? Album.fromJson(json['album']) : null;
@@ -417,18 +415,18 @@ class Album {
 
   Album(
       {this.albumType,
-        this.artists,
-        this.availableMarkets,
-        this.externalUrls,
-        this.href,
-        this.id,
-        this.images,
-        this.name,
-        this.releaseDate,
-        this.releaseDatePrecision,
-        this.totalTracks,
-        this.type,
-        this.uri});
+      this.artists,
+      this.availableMarkets,
+      this.externalUrls,
+      this.href,
+      this.id,
+      this.images,
+      this.name,
+      this.releaseDate,
+      this.releaseDatePrecision,
+      this.totalTracks,
+      this.type,
+      this.uri});
 
   Album.fromJson(Map<String, dynamic> json) {
     albumType = json['album_type'];
@@ -558,7 +556,7 @@ class ExternalIds {
 }
 
 class VideoThumbnail {
-  Null? url;
+  String? url;
 
   VideoThumbnail({this.url});
 
