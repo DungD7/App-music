@@ -152,7 +152,10 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                   ],
                 ),
                 LinearProgressIndicator(
-                  value: position.inSeconds.toDouble(),
+                  value: (position.inSeconds.toDouble() == 0)
+                      ? 0
+                      : (position.inSeconds.toDouble() /
+                          duration.inSeconds.toDouble()),
                   valueColor: const AlwaysStoppedAnimation<Color>(Colors.red),
                 )
               ],
