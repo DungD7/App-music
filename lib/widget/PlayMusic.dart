@@ -23,17 +23,15 @@ class _PlayMusicState extends State<PlayMusic> {
   }
 
   _musicInit() async {
-    var totalTime = await _player.setAudioSource(
+    await _player.setAudioSource(
         AudioSource.uri(Uri.parse("${widget.selectedSong.track?.previewUrl}")));
     duration = _player.duration!;
     _player.play();
     setState(() {});
     _player.positionStream.listen((event) {
-      if (event != null) {
-        Duration temp = event;
-        position = temp;
-        setState(() {});
-      }
+      Duration temp = event;
+      position = temp;
+      setState(() {});
     });
   }
 

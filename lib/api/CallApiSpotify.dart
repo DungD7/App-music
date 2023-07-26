@@ -11,7 +11,7 @@ class CallApiSpotify {
       "https://api.spotify.com/v1/search?q=Low%20G&type=playlist&market=VN";
   static String urlToken = 'https://accounts.spotify.com/api/token';
   static String token =
-      'BQAlO8gOEw8HMZbsf-Mv3VW0c7Ql092-LZSPHl4NqiTe4tnqXiuVQW0YTE0OKv2lI-GXmKzxjEn6ixWYJ6GlabM7Hy4jMdrV0XrFM6Ua0CfScIiYHa0';
+      'BQAg1ev978-5PsybDUEJmYxUs6dJX39C6QJzRaUiz5E1Kq8LERFlEHBNMh3bUPeqIOB_NGFJ8JiNjORbgjuhvNPwS4kyRYYd9XH06o_GfdqiAzHBvtA';
   static PlaylistsModel? dataPlaylists;
   static ListSongModel? dataListSong;
 
@@ -33,7 +33,6 @@ class CallApiSpotify {
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       dataListSong = ListSongModel.fromJson(data);
-      //print ('listData: ${dataListSong?.tracks?.items?[0].track?.previewUrl}');
       return dataListSong;
     } else {
       throw Exception('Failed to load data');
@@ -53,7 +52,7 @@ class CallApiSpotify {
       String? tokenUrl;
       TokenModel tokenModel;
       tokenModel = TokenModel.fromJson(data);
-      tokenUrl = tokenModel?.accessToken;
+      tokenUrl = tokenModel.accessToken;
       return tokenUrl;
     } else {
       throw Exception('Failed to load data');

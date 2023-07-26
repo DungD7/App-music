@@ -17,6 +17,7 @@ class _SearchState extends State<Search> {
   ItemSongs? selectedSong;
   List<ItemSongs> listSong = [];
   List<ItemSongs> displayList = [];
+  int? position;
   void updateList(String value) {
     setState(() {
       displayList = listSong
@@ -82,73 +83,92 @@ class _SearchState extends State<Search> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 10, bottom: 10, left: 20, right: 20),
-                child: TextField(
-                  onChanged: (value) => updateList(value),
-                  decoration: const InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(),
-                    labelText: 'Search',
-                    prefixIcon: Icon(Icons.search_outlined),
-                    prefixIconColor: Colors.white,
-                  ),
-                  style: const TextStyle(color: Colors.white, fontSize: 17),
-                ),
-              ),
+              search(),
               const SizedBox(
                 height: 20,
               ),
-              Expanded(
-                  child: (displayList.isEmpty)
-                      ? const SpinKitCircle(
-                          color: Colors.green,
-                          size: 50,
-                        )
-                      : ListView.builder(
-                          itemCount: displayList.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              onTap: () {
-                                selectedSong = displayList[index];
-                                setState(() {});
-                              },
-                              title: Text(
-                                '${displayList[index].track?.album?.name}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                ),
-                              ),
-                              subtitle: Text(
-                                '${displayList[index].track?.artists?[0].name}',
-                                style: const TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              trailing: IconButton(
-                                onPressed: () {
-                                  addMusicToLibrary();
-                                },
-                                icon: const Icon(
-                                  Icons.add,
-                                  color: Colors.green,
-                                  size: 35,
-                                ),
-                              ),
-                              leading: Image.network(
-                                  '${displayList[index].track?.album?.images?[0].url}'),
-                            );
-                          }))
+              Expanded(child: showListSongs())
             ],
           ),
         ),
         (selectedSong == null)
             ? Container()
-            : PlayMusicScreen(selectedSong: selectedSong)
+            : PlayMusicScreen(
+                //selectedSong: selectedSong,
+                positionSong: position,
+                listSong: listSong)
       ],
     ));
+  }
+
+  Widget search() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+      child: TextField(
+        onChanged: (value) => updateList(value),
+        decoration: const InputDecoration(
+          fillColor: Colors.white,
+          border: OutlineInputBorder(),
+          labelText: 'Search',
+          prefixIcon: Icon(Icons.search_outlined),
+          prefixIconColor: Colors.white,
+        ),
+        style: const TextStyle(color: Colors.white, fontSize: 17),
+      ),
+    );
+  }
+
+  Widget showListSongs() {
+    return (displayList.isEmpty)
+        ? const SpinKitCircle(
+            color: Colors.green,
+            size: 50,
+          )
+        : ListView.builder(
+            itemCount: displayList.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                onTap: () {
+                  position = index;
+                  selectedSong = displayList[index];
+                  setState(() {});
+                },
+                title: Text(
+                  '${displayList[index].track?.album?.name}',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+                subtitle: Text(
+                  '${displayList[index].track?.artists?.first.name}',
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                  ),
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    addMusicToLibrary();
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog.fullscreen(
+                          backgroundColor: Colors.black.withOpacity(0.5),
+                          child: Container(),
+                        );
+                      },
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.add,
+                    color: Colors.green,
+                    size: 35,
+                  ),
+                ),
+                leading: Image.network(
+                    '${displayList[index].track?.album?.images?.first.url}'),
+              );
+            });
   }
 }

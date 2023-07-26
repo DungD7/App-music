@@ -4,14 +4,14 @@ import 'package:http/http.dart' as http;
 
 import 'model/TokenModel.dart';
 
-class GetToken {
-  static final GetToken _getToken = GetToken._internal();
+class Token {
+  static final Token _getToken = Token._internal();
 
-  factory GetToken() {
+  factory Token() {
     return _getToken;
   }
 
-  GetToken._internal();
+  Token._internal();
 
   static Future<String?> getToken() async {
     final response = await http.post(
