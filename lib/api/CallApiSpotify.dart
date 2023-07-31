@@ -1,17 +1,17 @@
 import 'dart:convert';
 
-import 'package:app_music/model/TokenModel.dart';
+import 'package:app_music/models/TokenModel.dart';
 import 'package:http/http.dart' as http;
 
-import '../model/ListSongModel.dart';
-import '../model/playlistsModel.dart';
+import '../models/ListSongModel.dart';
+import '../models/playlistsModel.dart';
 
 class CallApiSpotify {
   static String urlPlaylists =
       "https://api.spotify.com/v1/search?q=Low%20G&type=playlist&market=VN";
   static String urlToken = 'https://accounts.spotify.com/api/token';
   static String token =
-      'BQAg1ev978-5PsybDUEJmYxUs6dJX39C6QJzRaUiz5E1Kq8LERFlEHBNMh3bUPeqIOB_NGFJ8JiNjORbgjuhvNPwS4kyRYYd9XH06o_GfdqiAzHBvtA';
+      'BQDSr2uqUrUpce5HZ_zjlxewhZM9lOKVjCI8mk4kT2cJqw6MoFifwly9xd6pUzWHq9jSn_GAIZV5bRAtQ-8T9sF6L46GVfrjsjr63CvPGbnnMjoc7ZY';
   static PlaylistsModel? dataPlaylists;
   static ListSongModel? dataListSong;
 

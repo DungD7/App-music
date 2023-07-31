@@ -1,4 +1,4 @@
-import 'package:app_music/Screen/screens.dart';
+import 'package:app_music/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
       home: const Screens(),

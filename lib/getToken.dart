@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'model/TokenModel.dart';
+import 'models/TokenModel.dart';
 
 class Token {
   static final Token _getToken = Token._internal();
