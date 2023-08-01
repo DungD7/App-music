@@ -13,7 +13,7 @@ class Screens extends StatefulWidget {
 class _ScreensState extends State<Screens> {
   int currentIndex = 0;
   List<Widget> screens = [
-    const Home(),
+    Home(),
     const Search(),
     const Library(),
   ];

@@ -1,4 +1,4 @@
-import 'package:app_music/models/Library.dart';
+import 'package:app_music/models/LibraryModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -7,7 +7,7 @@ import '../models/ListSongModel.dart';
 import '../models/playlistsModel.dart';
 import 'PlayMusicScreen.dart';
 
-ValueNotifier<Library?> yourLib = ValueNotifier(null);
+ValueNotifier<LibraryModel> yourLib = ValueNotifier(LibraryModel(library: []));
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -21,7 +21,7 @@ class _SearchState extends State<Search> {
   List<ItemSongs> listSong = [];
   List<ItemSongs> displayList = [];
   int? position;
-  Library yourPlaylists = Library(library: []);
+  //Library yourPlaylists = Library(library: []);
   void updateList(String value) {
     setState(() {
       displayList = listSong
@@ -54,7 +54,15 @@ class _SearchState extends State<Search> {
         if (listSongData != null) {
           for (int j = 0; j < listSongData.tracks!.items!.length; j++) {
             ItemSongs itemSong = listSongData.tracks!.items![j];
-            listSong.add(itemSong);
+            bool check = true;
+            for (int k = 0; k < listSong.length; k++) {
+              if (itemSong.track?.name == listSong[k].track?.name) {
+                check = false;
+              }
+            }
+            if (check == true) {
+              listSong.add(itemSong);
+            }
           }
         }
         if (count == playlistsData!.playlists!.items!.length) {
@@ -115,7 +123,7 @@ class _SearchState extends State<Search> {
           prefixIcon: Icon(Icons.search_outlined),
           prefixIconColor: Colors.white,
         ),
-        style: const TextStyle(color: Colors.white, fontSize: 17),
+        style: const TextStyle(color: Colors.white, fontSize: 15),
       ),
     );
   }
@@ -242,7 +250,7 @@ class _SearchState extends State<Search> {
                                                               name: name,
                                                               playlistYourLib:
                                                                   list);
-                                                      yourPlaylists.library
+                                                      yourLib.value.library
                                                           .add(newPlaylist);
                                                       Navigator.pop(
                                                           dialogContext);
@@ -275,39 +283,51 @@ class _SearchState extends State<Search> {
                                     const SizedBox(height: 20),
                                     Expanded(
                                       child: ListView.builder(
-                                        itemCount: yourPlaylists.library.length,
+                                        itemCount: yourLib.value.library.length,
                                         itemBuilder: (context, index) {
                                           return ListTile(
                                             title: Text(
-                                              yourPlaylists.library[index].name,
+                                              yourLib.value.library[index].name,
                                               overflow: TextOverflow.ellipsis,
                                               style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            subtitle:
-                                                yourPlaylists.library.length ==
-                                                        1
-                                                    ? Text(
-                                                        '${yourPlaylists.library[index].playlistYourLib.length} track',
-                                                        style: const TextStyle(
-                                                          color: Colors.white70,
-                                                          fontSize: 14,
-                                                        ),
-                                                      )
-                                                    : Text(
-                                                        '${yourPlaylists.library[index].playlistYourLib.length} tracks',
-                                                        style: const TextStyle(
-                                                          color: Colors.white70,
-                                                          fontSize: 14,
-                                                        ),
-                                                      ),
-                                            leading: Image.network(
-                                              '${yourPlaylists.library[index].playlistYourLib.first.track?.album?.images?.first.url}',
-                                              height: 50,
-                                              width: 50,
-                                            ),
+                                            subtitle: yourLib
+                                                    .value
+                                                    .library[index]
+                                                    .playlistYourLib
+                                                    .isEmpty
+                                                ? Text(
+                                                    '${yourLib.value.library[index].playlistYourLib.length} track',
+                                                    style: const TextStyle(
+                                                      color: Colors.white70,
+                                                      fontSize: 14,
+                                                    ),
+                                                  )
+                                                : Text(
+                                                    '${yourLib.value.library[index].playlistYourLib.length} tracks',
+                                                    style: const TextStyle(
+                                                      color: Colors.white70,
+                                                      fontSize: 14,
+                                                    ),
+                                                  ),
+                                            leading: yourLib
+                                                    .value
+                                                    .library[index]
+                                                    .playlistYourLib
+                                                    .isEmpty
+                                                ? Image.asset(
+                                                    'assets/image_playlist.jpg',
+                                                    height: 50,
+                                                    width: 50,
+                                                  )
+                                                : Image.network(
+                                                    '${yourLib.value.library[index].playlistYourLib.first.track?.album?.images?.first.url}',
+                                                    height: 50,
+                                                    width: 50,
+                                                  ),
                                             trailing: Checkbox(
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
@@ -315,11 +335,11 @@ class _SearchState extends State<Search> {
                                                           50)),
                                               onChanged: (newBool) {
                                                 setState(() {
-                                                  yourPlaylists.library[index]
+                                                  yourLib.value.library[index]
                                                       .isChecked = newBool!;
                                                 });
                                               },
-                                              value: yourPlaylists
+                                              value: yourLib.value
                                                   .library[index].isChecked,
                                               checkColor: Colors.white,
                                               activeColor: Colors.green,
@@ -371,26 +391,26 @@ class _SearchState extends State<Search> {
   }
 
   void addMusicToLib(int index) {
-    for (int i = 0; i < yourPlaylists.library.length; i++) {
-      if (yourPlaylists.library[i].isChecked == true) {
+    for (int i = 0; i < yourLib.value.library.length; i++) {
+      if (yourLib.value.library[i].isChecked == true) {
         bool checkMusic = false;
         for (int j = 0;
-            j < yourPlaylists.library[i].playlistYourLib.length;
+            j < yourLib.value.library[i].playlistYourLib.length;
             j++) {
-          if (listSong[index] == yourPlaylists.library[i].playlistYourLib[j]) {
+          if (listSong[index] == yourLib.value.library[i].playlistYourLib[j]) {
             checkMusic = true;
           }
         }
         if (checkMusic == false) {
-          yourPlaylists.library[i].playlistYourLib.add(listSong[index]);
+          yourLib.value.library[i].playlistYourLib.add(listSong[index]);
         }
       }
     }
   }
 
   void setIsChecked() {
-    for (int i = 0; i < yourPlaylists.library.length; i++) {
-      yourPlaylists.library[i].isChecked = false;
+    for (int i = 0; i < yourLib.value.library.length; i++) {
+      yourLib.value.library[i].isChecked = false;
     }
   }
 }

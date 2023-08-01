@@ -3,10 +3,24 @@ import 'package:flutter/material.dart';
 import '../widgets/SuggestionList.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Home({super.key});
+  TimeOfDay currentTime = TimeOfDay.now();
+  String? greeting;
+
+  getGreeting() {
+    if (currentTime.hour.toInt() >= 5 && currentTime.hour.toInt() < 12) {
+      greeting = 'Good morning';
+    } else if (currentTime.hour.toInt() >= 12 &&
+        currentTime.hour.toInt() < 18) {
+      greeting = 'Good afternoon';
+    } else {
+      greeting = 'Good evening';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    getGreeting();
     return SafeArea(
       child: Container(
         color: Colors.black,
@@ -25,16 +39,16 @@ class Home extends StatelessWidget {
                         color: Colors.green),
                     child: const Center(child: Text("D")),
                   ),
-                  const Text(
-                    'Spotify',
-                    style: TextStyle(color: Colors.white, fontSize: 27),
-                  ),
+                  Text(
+                    '$greeting',
+                    style: const TextStyle(color: Colors.white, fontSize: 27),
+                  )
                 ],
               ),
               const SizedBox(
                 height: 10,
               ),
-              NameListView(name: 'Trending Now'),
+              namePlaylists('Trending'),
               const SuggestionList(),
               const SizedBox(
                 height: 10,
@@ -46,17 +60,8 @@ class Home extends StatelessWidget {
       ),
     );
   }
-}
 
-class NameListView extends StatelessWidget {
-  String name;
-  NameListView({
-    required this.name,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
+  Align namePlaylists(String name) {
     return Align(
       alignment: Alignment.topLeft,
       child: Padding(

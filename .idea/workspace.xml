@@ -24,34 +24,30 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/assets/debug/flutter_assets/AssetManifest.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/assets/debug/flutter_assets/AssetManifest.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/assets/debug/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/assets/debug/flutter_assets/AssetManifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/assets/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/assets/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/AssetManifest.bin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/AssetManifest.bin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/AssetManifest.json.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/AssetManifest.json.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir/values/values.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_res/debug/drawable_launch_background.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_res/debug/drawable_launch_background.xml.flat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk.sha1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/PlayMusicScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/PlayMusicScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Search.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/library.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/library.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/playlistScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/playlistScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/screens.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/screens.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/api/CallApiSpotify.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/CallApiSpotify.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/getToken.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/getToken.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/ListSongModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/ListSongModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/TokenModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/TokenModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/playlistsModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/playlistsModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/ItemPlaylist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/ItemPlaylist.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/PlayMusic.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/SuggestionList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/SuggestionList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/Library.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/LibraryModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/PlayMusicScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/PlayMusicScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/Search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/library.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/library.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/playlistScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/playlistScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/screens.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/screens.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LoginGoogle/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../LoginGoogle/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Music/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Music/.metadata" beforeDir="false" />
@@ -875,23 +871,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/university/FLUTTER/AppMusic/android&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "D:/university/FLUTTER/spotify-dart-master",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\university\FLUTTER\AppMusic\assets\music" />

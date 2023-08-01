@@ -45,11 +45,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                         size: 50,
                       ),
                     )
-                  : Column(
-                      children: [
-                        infPlaylist(),
-                      ],
-                    ),
+                  : infPlaylist(),
             ),
             (selectedSong == null)
                 ? Container()

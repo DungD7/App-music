@@ -36,7 +36,6 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
         Uri.parse("${widget.listSong[positionSong].track?.previewUrl}")));
     duration = _player.duration!;
     _player.play();
-    // setState(() {});
     _player.positionStream.listen((event) {
       Duration temp = event;
       position = temp;
@@ -87,7 +86,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
     );
   }
 
-  Container miniPlayerToFullScreen(double height) {
+  Widget miniPlayerToFullScreen(double height) {
     return Container(
       color: Colors.black,
       child: Align(
