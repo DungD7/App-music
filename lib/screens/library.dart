@@ -85,7 +85,6 @@ class _LibraryState extends State<Library> {
                                     NewPlaylist newPlaylist = NewPlaylist(
                                         name: name, playlistYourLib: list);
                                     yourLib.value.library.add(newPlaylist);
-                                    yourLib.value.library.add(newPlaylist);
                                     Navigator.pop(dialogContext);
                                     setState(() {}); // Dismiss alert dialog
                                   },
@@ -129,98 +128,7 @@ class _LibraryState extends State<Library> {
                     builder: (context, setState) {
                       return Dialog.fullscreen(
                         backgroundColor: Colors.black.withOpacity(0.8),
-                        child: SafeArea(
-                          child: Stack(
-                            children: [
-                              //infPlaylist(index),
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: BackButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    Image.network(
-                                      '${displayYourLib[index].playlistYourLib.first.track?.album?.images?.first.url}',
-                                      height: 250,
-                                      width: 250,
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 20.0),
-                                      child: Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          'Playlist',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18),
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      displayYourLib[index].name,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 40),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Expanded(
-                                        child: ListView.builder(
-                                      itemCount: yourLib.value.library[index]
-                                          .playlistYourLib.length,
-                                      itemBuilder: (context, value) {
-                                        return ListTile(
-                                          onTap: () {
-                                            position = value;
-                                            selectedSong = yourLib
-                                                .value
-                                                .library[index]
-                                                .playlistYourLib[value];
-                                            setState(() {});
-                                          },
-                                          title: Text(
-                                            '${yourLib.value.library[index].playlistYourLib[value].track?.album?.name}',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 17,
-                                            ),
-                                          ),
-                                          subtitle: Text(
-                                            '${yourLib.value.library[index].playlistYourLib[value].track?.artists?.first.name}',
-                                            style: const TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                          leading: Image.network(
-                                            '${yourLib.value.library[index].playlistYourLib[value].track?.album?.images?.first.url}',
-                                            height: 50,
-                                            width: 50,
-                                          ),
-                                        );
-                                      },
-                                    )),
-                                  ],
-                                ),
-                              ),
-                              (selectedSong == null)
-                                  ? Container()
-                                  : PlayMusicScreen(
-                                      positionSong: position,
-                                      listSong: yourLib.value.library[index]
-                                          .playlistYourLib),
-                            ],
-                          ),
-                        ),
+                        child: showYourPlaylist(context, index, setState),
                       );
                     },
                   );
@@ -320,6 +228,115 @@ class _LibraryState extends State<Library> {
           );
         },
       ),
+    );
+  }
+
+  SafeArea showYourPlaylist(
+      BuildContext context, int index, StateSetter setState) {
+    if (yourLib.value.library[index].playlistYourLib.isEmpty) {
+      Navigator.pop(context);
+      initState();
+    }
+    return SafeArea(
+      child: yourLib.value.library[index].playlistYourLib.isEmpty
+          ? Container()
+          : Stack(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: BackButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          color: Colors.white,
+                        ),
+                      ),
+                      Image.network(
+                        '${displayYourLib[index].playlistYourLib.first.track?.album?.images?.first.url}',
+                        height: 250,
+                        width: 250,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Playlist',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        displayYourLib[index].name,
+                        overflow: TextOverflow.ellipsis,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                      const SizedBox(height: 10),
+                      Expanded(
+                          child: ListView.builder(
+                        itemCount:
+                            yourLib.value.library[index].playlistYourLib.length,
+                        itemBuilder: (context, value) {
+                          return ListTile(
+                            onTap: () {
+                              position = value;
+                              selectedSong = yourLib
+                                  .value.library[index].playlistYourLib[value];
+                              setState(() {});
+                            },
+                            trailing: IconButton(
+                              onPressed: () {
+                                yourLib.value.library[index].playlistYourLib
+                                    .remove(yourLib.value.library[index]
+                                        .playlistYourLib[value]);
+                                setState(() {});
+                              },
+                              icon: const Icon(
+                                Icons.remove_circle_outline,
+                                color: Colors.green,
+                                size: 22,
+                              ),
+                            ),
+                            title: Text(
+                              '${yourLib.value.library[index].playlistYourLib[value].track?.album?.name}',
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                              ),
+                            ),
+                            subtitle: Text(
+                              '${yourLib.value.library[index].playlistYourLib[value].track?.artists?.first.name}',
+                              style: const TextStyle(
+                                color: Colors.white70,
+                                fontSize: 12,
+                              ),
+                            ),
+                            leading: Image.network(
+                              '${yourLib.value.library[index].playlistYourLib[value].track?.album?.images?.first.url}',
+                              height: 50,
+                              width: 50,
+                            ),
+                          );
+                        },
+                      )),
+                    ],
+                  ),
+                ),
+                (selectedSong == null)
+                    ? Container()
+                    : PlayMusicScreen(
+                        positionSong: position,
+                        listSong: yourLib.value.library[index].playlistYourLib),
+              ],
+            ),
     );
   }
 

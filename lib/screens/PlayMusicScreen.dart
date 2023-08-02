@@ -1,3 +1,4 @@
+import 'package:app_music/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:miniplayer/miniplayer.dart';
@@ -30,6 +31,9 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
   }
 
   _musicInit(int positionSong) async {
+    isCurrentPlaying.value = true;
+    currentPlaylist.value = widget.listSong;
+    positionCurrentPlaying.value = widget.positionSong;
     currentlySong = widget.listSong[widget.positionSong!].track?.name;
     isPlaying = true;
     await _player.setAudioSource(AudioSource.uri(
@@ -74,7 +78,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
       curve: Curves.easeOut,
       maxHeight: MediaQuery.of(context).size.height,
       builder: (height, percentage) {
-        if (250 < height && height <= 530) {
+        if (250 < height && height <= 550) {
           return miniPlayerToFullScreen(height);
         }
         if (height <= 250) {
@@ -194,12 +198,15 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
               height: 250,
               fit: BoxFit.fill),
           const SizedBox(height: 10),
-          Text(
-            '${widget.listSong[widget.positionSong!].track?.name}',
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 20,
-              color: Colors.white,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Text(
+              '${widget.listSong[widget.positionSong!].track?.name}',
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
             ),
           ),
           Text(
@@ -267,7 +274,43 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                 color: Colors.white,
               )
             ],
-          )
+          ),
+          const SizedBox(height: 20),
+          Expanded(
+              child: ListView.builder(
+            itemCount: widget.listSong.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                onTap: () {
+                  if (widget.positionSong != index) {
+                    setState(() {
+                      widget.positionSong = index;
+                    });
+                  }
+                },
+                title: Text(
+                  '${widget.listSong[index].track?.album?.name}',
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+                subtitle: Text(
+                  '${widget.listSong[index].track?.artists?.first.name}',
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                  ),
+                ),
+                leading: Image.network(
+                  '${widget.listSong[index].track?.album?.images?.first.url}',
+                  height: 50,
+                  width: 50,
+                ),
+              );
+            },
+          )),
         ],
       ),
     );

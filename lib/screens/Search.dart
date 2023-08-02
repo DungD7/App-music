@@ -33,7 +33,9 @@ class _SearchState extends State<Search> {
 
   @override
   void initState() {
-    CallApiSpotify.fetchApiPlaylists().then((data) {
+    CallApiSpotify.fetchApiPlaylists(
+            "https://api.spotify.com/v1/search?q=trending%2520viet%2520nam&type=playlist&market=vn")
+        .then((data) {
       if (data != null) {
         setState(() {
           playlistsData = data;

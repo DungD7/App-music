@@ -7,16 +7,15 @@ import '../models/ListSongModel.dart';
 import '../models/playlistsModel.dart';
 
 class CallApiSpotify {
-  static String urlPlaylists =
-      "https://api.spotify.com/v1/search?q=Low%20G&type=playlist&market=VN";
+  static String urlPlaylists = "";
   static String urlToken = 'https://accounts.spotify.com/api/token';
   static String token =
-      'BQBASe7FgFCHtu35R3iATxnqS0wF8QRYKxExR-YkZxEz2Ts6-xXgubE0OwdK4CrHqbU3PKcvMBnZMtjY96E1sm0EuWbuTgYpSAnv50L4QV2DrR36tWY';
+      'BQBwUPaKKNfwD3sZlVNNytzPe8q-J4mwZ1sC4_GPSQOAx2AC3Gvu0JbfDTo3HeHtTWtG-1LI8rTPY1kiYD2k6iV6_Gwwx_V5Qvsy8ZcX-YnRHZQwoYM';
   static PlaylistsModel? dataPlaylists;
   static ListSongModel? dataListSong;
 
-  static Future<PlaylistsModel?> fetchApiPlaylists() async {
-    final response = await http.get(Uri.parse(urlPlaylists),
+  static Future<PlaylistsModel?> fetchApiPlaylists(String urlPlaylist) async {
+    final response = await http.get(Uri.parse(urlPlaylist),
         headers: {'Authorization': 'Bearer $token'});
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);

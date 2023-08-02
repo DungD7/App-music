@@ -1,7 +1,12 @@
+import 'package:app_music/models/ListSongModel.dart';
 import 'package:app_music/screens/Home.dart';
 import 'package:app_music/screens/Search.dart';
 import 'package:app_music/screens/library.dart';
 import 'package:flutter/material.dart';
+
+ValueNotifier<bool> isCurrentPlaying = ValueNotifier(false);
+ValueNotifier<int?> positionCurrentPlaying = ValueNotifier(null);
+ValueNotifier<List<ItemSongs>> currentPlaylist = ValueNotifier([]);
 
 class Screens extends StatefulWidget {
   const Screens({super.key});
@@ -13,7 +18,7 @@ class Screens extends StatefulWidget {
 class _ScreensState extends State<Screens> {
   int currentIndex = 0;
   List<Widget> screens = [
-    Home(),
+    const Home(),
     const Search(),
     const Library(),
   ];
@@ -21,7 +26,16 @@ class _ScreensState extends State<Screens> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: screens[currentIndex],
+      body: Stack(
+        children: [
+          screens[currentIndex],
+          // isCurrentPlaying.value == false
+          //     ? Container()
+          //     : PlayMusicScreen(
+          //         positionSong: positionCurrentPlaying.value,
+          //         listSong: currentPlaylist.value)
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         backgroundColor: Colors.black,

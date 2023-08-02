@@ -1,3 +1,4 @@
+import 'package:app_music/screens/Home.dart';
 import 'package:app_music/screens/playlistScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,12 @@ class ItemMusic extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        for (int i = 0; i < recentlyPlayed.value.length; i++) {
+          if (recentlyPlayed.value[i].name == items.name) {
+            recentlyPlayed.value.remove(recentlyPlayed.value[i]);
+          }
+        }
+        recentlyPlayed.value.add(items);
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -37,7 +44,7 @@ class ItemMusic extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.network(
-              '${items.images?[0].url}',
+              '${items.images?.first.url}',
               height: 120,
               width: 120,
               fit: BoxFit.fill,
@@ -47,7 +54,8 @@ class ItemMusic extends StatelessWidget {
             ),
             Text(
               txtName((items.name).toString()),
-              style: const TextStyle(color: Colors.white, fontSize: 15),
+              style:
+                  TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 15),
             )
           ],
         ),

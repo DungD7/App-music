@@ -6,7 +6,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'ItemPlaylist.dart';
 
 class SuggestionList extends StatefulWidget {
-  const SuggestionList({
+  String urlPlaylist;
+  SuggestionList({
+    required this.urlPlaylist,
     super.key,
   });
 
@@ -19,7 +21,7 @@ class _SuggestionListState extends State<SuggestionList> {
 
   @override
   void initState() {
-    CallApiSpotify.fetchApiPlaylists().then((data) {
+    CallApiSpotify.fetchApiPlaylists(widget.urlPlaylist).then((data) {
       setState(() {
         if (data != null) {
           playlistsData = data;
@@ -46,7 +48,7 @@ class _SuggestionListState extends State<SuggestionList> {
             : ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: 20,
+                itemCount: 13,
                 itemBuilder: (context, index) {
                   return ItemMusic(
                       items: playlistsData!.playlists!.items![index]);
