@@ -3,6 +3,9 @@ class Assets {
   Assets._();
 
   static const String assetsBgSplash = 'assets/bg_splash.jpg';
+  static const String assetsGoogle = 'assets/google.png';
+  static const String assetsImagePlaylist = 'assets/image_playlist.jpg';
   static const String assetsLogo = 'assets/logo.png';
+  static const String assetsLogoSpotify = 'assets/logoSpotify.png';
   static const String assetsSplash = 'assets/splash.jpg';
 }

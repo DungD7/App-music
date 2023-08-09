@@ -1,6 +1,7 @@
 import 'package:app_music/models/LibraryModel.dart';
 import 'package:app_music/models/ListSongModel.dart';
 import 'package:app_music/screens/PlayMusicScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'Search.dart';
@@ -27,15 +28,20 @@ class _LibraryState extends State<Library> {
           children: [
             Row(
               children: [
+                const SizedBox(width: 10),
                 Container(
-                  margin: const EdgeInsets.all(15),
-                  height: 50,
                   width: 50,
+                  height: 50,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.green),
-                  child: const Center(child: Text("D")),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            '${FirebaseAuth.instance.currentUser?.photoURL}')),
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
+                    color: Colors.redAccent,
+                  ),
                 ),
+                const SizedBox(width: 10),
                 const Text(
                   'Your library',
                   style: TextStyle(
@@ -235,7 +241,6 @@ class _LibraryState extends State<Library> {
       BuildContext context, int index, StateSetter setState) {
     if (yourLib.value.library[index].playlistYourLib.isEmpty) {
       Navigator.pop(context);
-      initState();
     }
     return SafeArea(
       child: yourLib.value.library[index].playlistYourLib.isEmpty
@@ -345,13 +350,17 @@ class _LibraryState extends State<Library> {
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       child: TextField(
         onChanged: (text) => updateList(text),
-        decoration: const InputDecoration(
-          fillColor: Colors.white,
-          border: OutlineInputBorder(),
-          labelText: 'Search',
-          prefixIcon: Icon(Icons.search_outlined),
-          prefixIconColor: Colors.white,
-        ),
+        decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: const BorderSide(width: 2, color: Colors.white70)),
+            labelText: 'Search',
+            prefixIcon: const Icon(Icons.search),
+            prefixIconColor: Colors.white70,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: const BorderSide(width: 2, color: Colors.green),
+            )),
         style: const TextStyle(color: Colors.white, fontSize: 15),
       ),
     );

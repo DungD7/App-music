@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.app_music.app-mergeDebugResources-14:/values-v21/values-v21.xml",
+            "outputFile": "com.example.app_music.app-mergeDebugResources-20:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\transforms-3\\33aeac6041f7f32f65addefb234a1ba0\\transformed\\media-1.4.1\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\transforms-3\\3fb2d0be62cedd4a979b331a4e727e34\\transformed\\media-1.4.1\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\transforms-3\\57d13c65eae90a7945dea98c1aa2b720\\transformed\\core-1.7.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\transforms-3\\fe5e04f437acc23ed511f2b110e1b670\\transformed\\core-1.7.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

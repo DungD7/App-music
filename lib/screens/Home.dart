@@ -1,5 +1,7 @@
+import 'package:app_music/models/authentic.dart';
 import 'package:app_music/models/playlistsModel.dart';
 import 'package:app_music/screens/playlistScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/SuggestionList.dart';
@@ -48,19 +50,29 @@ class _HomeState extends State<Home> {
             children: [
               Row(
                 children: [
+                  const SizedBox(width: 10),
                   Container(
-                    margin: const EdgeInsets.all(15),
-                    height: 50,
                     width: 50,
+                    height: 50,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.green),
-                    child: const Center(child: Text("D")),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                              '${FirebaseAuth.instance.currentUser?.photoURL}')),
+                      borderRadius: const BorderRadius.all(Radius.circular(50)),
+                      color: Colors.redAccent,
+                    ),
                   ),
+                  const SizedBox(width: 10),
                   Text(
                     '$greeting',
                     style: const TextStyle(color: Colors.white, fontSize: 27),
-                  )
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        AuthService().logOutGoogle();
+                      },
+                      icon: const Icon(Icons.logout))
                 ],
               ),
               namePlaylists('Recently played'),
@@ -127,6 +139,7 @@ class _HomeState extends State<Home> {
                     MaterialPageRoute(
                         builder: (context) => PlaylistScreen(
                             urlListSong: recentlyPlayed.value[index].href!)));
+                setState(() {});
               },
               title: Text(
                 overflow: TextOverflow.ellipsis,

@@ -108,7 +108,7 @@ class _SearchState extends State<Search> {
             : PlayMusicScreen(
                 //selectedSong: selectedSong,
                 positionSong: position,
-                listSong: listSong)
+                listSong: displayList)
       ],
     ));
   }
@@ -118,13 +118,17 @@ class _SearchState extends State<Search> {
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       child: TextField(
         onChanged: (value) => updateList(value),
-        decoration: const InputDecoration(
-          fillColor: Colors.white,
-          border: OutlineInputBorder(),
-          labelText: 'Search',
-          prefixIcon: Icon(Icons.search_outlined),
-          prefixIconColor: Colors.white,
-        ),
+        decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: const BorderSide(width: 2, color: Colors.white70)),
+            labelText: 'Search',
+            prefixIcon: const Icon(Icons.search),
+            prefixIconColor: Colors.white70,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: const BorderSide(width: 2, color: Colors.green),
+            )),
         style: const TextStyle(color: Colors.white, fontSize: 15),
       ),
     );

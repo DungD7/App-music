@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:app_music/models/TokenModel.dart';
+import 'package:app_music/tokenSingleton.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/ListSongModel.dart';
@@ -10,7 +11,7 @@ class CallApiSpotify {
   static String urlPlaylists = "";
   static String urlToken = 'https://accounts.spotify.com/api/token';
   static String token =
-      'BQBwUPaKKNfwD3sZlVNNytzPe8q-J4mwZ1sC4_GPSQOAx2AC3Gvu0JbfDTo3HeHtTWtG-1LI8rTPY1kiYD2k6iV6_Gwwx_V5Qvsy8ZcX-YnRHZQwoYM';
+      'BQCGD625p89giH9IaZqavUrC2KcG8gcUGVUWdPh4b4qTrMtQ3linGcTqBRtVx9xAJEXVbvcwdHLsRoZFg0u62tpsYbNQd-wGFH62Z7lrfCs2J6mW-i4';
   static PlaylistsModel? dataPlaylists;
   static ListSongModel? dataListSong;
 
@@ -40,11 +41,11 @@ class CallApiSpotify {
 
   static Future<String?> getToken() async {
     final response = await http.post(Uri.parse(urlToken), headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": TokenSingleton().contentType,
     }, body: {
-      'grant_type': 'client_credentials',
-      'client_id': '4235bc5a42284e6eae31fff9d2bd4399',
-      'client_secret': '67504c5887ec4a9eacf0e32680f48270'
+      'grant_type': TokenSingleton().grantType,
+      'client_id': TokenSingleton().clientID,
+      'client_secret': TokenSingleton().clientSecret
     });
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);

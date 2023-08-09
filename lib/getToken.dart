@@ -1,37 +1,50 @@
 import 'dart:convert';
 
+import 'package:app_music/models/TokenModel.dart';
 import 'package:http/http.dart' as http;
 
-import 'models/TokenModel.dart';
+class TokenSingleton {
+  static final TokenSingleton _singleton = TokenSingleton._internal();
 
-class Token {
-  static final Token _getToken = Token._internal();
+  String token = '';
+  final String contentType = "application/x-www-form-urlencoded";
+  final String grantType = "client_credentials";
+  final String clientID = '4235bc5a42284e6eae31fff9d2bd4399';
+  final String clientSecret = '67504c5887ec4a9eacf0e32680f48270';
 
-  factory Token() {
-    return _getToken;
+  factory TokenSingleton() {
+    return _singleton;
   }
 
-  Token._internal();
+  TokenSingleton._internal() {
+    _initializeToken();
+  }
 
-  static Future<String?> getToken() async {
-    final response = await http.post(
-        Uri.parse(
-            "https://api.spotify.com/v1/search?q=Low%20G&type=playlist&market=VN"),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: {
-          'grant_type': 'client_credentials',
-          'client_id': '4235bc5a42284e6eae31fff9d2bd4399',
-          'client_secret': '67504c5887ec4a9eacf0e32680f48270'
-        });
+  Future<void> _initializeToken() async {
+    try {
+      String? data = await getToken();
+      if (data != null) {
+        _singleton.token = data;
+        print('tokenn1: ${_singleton.token}');
+      }
+    } catch (error) {
+      print('Error fetching token: $error');
+    }
+  }
+
+  Future<String?> getToken() async {
+    final response = await http
+        .post(Uri.parse('https://accounts.spotify.com/api/token'), headers: {
+      "Content-Type": contentType,
+    }, body: {
+      'grant_type': grantType,
+      'client_id': clientID,
+      'client_secret': clientSecret
+    });
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      String? tokenUrl;
-      TokenModel tokenModel;
-      tokenModel = TokenModel.fromJson(data);
-      tokenUrl = tokenModel?.accessToken;
-      return tokenUrl;
+      TokenModel tokenModel = TokenModel.fromJson(data);
+      return tokenModel.accessToken;
     } else {
       throw Exception('Failed to load data');
     }
