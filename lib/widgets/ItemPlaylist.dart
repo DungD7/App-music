@@ -1,12 +1,12 @@
 import 'package:app_music/screens/Home.dart';
-import 'package:app_music/screens/playlistScreen.dart';
+import 'package:app_music/screens/playlist_screens/detail_playlist_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../models/playlistsModel.dart';
+import '../models/search_playlist/PlaylistsModel.dart';
 
-class ItemMusic extends StatelessWidget {
+class ItemPlaylist extends StatelessWidget {
   Items items;
-  ItemMusic({
+  ItemPlaylist({
     required this.items,
     super.key,
   });
@@ -35,7 +35,7 @@ class ItemMusic extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    PlaylistScreen(urlListSong: items.href!)));
+                    DetailPlaylistScreen(urlListSong: items.href!)));
       },
       child: Container(
         padding: const EdgeInsets.all(10),

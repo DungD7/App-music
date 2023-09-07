@@ -1,7 +1,5 @@
-import 'package:app_music/models/authentic.dart';
-import 'package:app_music/models/playlistsModel.dart';
-import 'package:app_music/screens/playlistScreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app_music/models/search_playlist/PlaylistsModel.dart';
+import 'package:app_music/screens/playlist_screens/detail_playlist_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/SuggestionList.dart';
@@ -51,28 +49,13 @@ class _HomeState extends State<Home> {
               Row(
                 children: [
                   const SizedBox(width: 10),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              '${FirebaseAuth.instance.currentUser?.photoURL}')),
-                      borderRadius: const BorderRadius.all(Radius.circular(50)),
-                      color: Colors.redAccent,
-                    ),
-                  ),
-                  const SizedBox(width: 10),
                   Text(
                     '$greeting',
-                    style: const TextStyle(color: Colors.white, fontSize: 27),
+                    style: const TextStyle(
+                        color: Colors.green,
+                        fontSize: 27,
+                        fontWeight: FontWeight.bold),
                   ),
-                  IconButton(
-                      onPressed: () {
-                        AuthService().logOutGoogle();
-                      },
-                      icon: const Icon(Icons.logout))
                 ],
               ),
               namePlaylists('Recently played'),
@@ -137,7 +120,7 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PlaylistScreen(
+                        builder: (context) => DetailPlaylistScreen(
                             urlListSong: recentlyPlayed.value[index].href!)));
                 setState(() {});
               },

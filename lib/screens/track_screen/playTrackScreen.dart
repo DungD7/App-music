@@ -1,43 +1,40 @@
-import 'package:app_music/screens/screens.dart';
+import 'package:app_music/models/search_track/TracksModel.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:miniplayer/miniplayer.dart';
 
-import '../models/ListSongModel.dart';
+import '../screens.dart';
 
-class PlayMusicScreen extends StatefulWidget {
-  int? positionSong;
-  List<ItemSongs> listSong;
-  PlayMusicScreen(
-      {required this.positionSong, required this.listSong, super.key});
+class PlayTrackScreen extends StatefulWidget {
+  int? positionTrack;
+  List<Items> listTracks;
+  PlayTrackScreen(
+      {required this.positionTrack, required this.listTracks, super.key});
 
   @override
-  State<PlayMusicScreen> createState() => _PlayMusicScreenState();
+  State<PlayTrackScreen> createState() => _PlayTrackScreenState();
 }
 
-class _PlayMusicScreenState extends State<PlayMusicScreen> {
+class _PlayTrackScreenState extends State<PlayTrackScreen> {
   final _player = AudioPlayer();
   bool isPlaying = true;
   bool isChangeVolume = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
-  //ItemSongs? selectedSong;
-  String? currentlySong;
+  String? currentTrack;
 
   @override
   void initState() {
     super.initState();
-    _musicInit(widget.positionSong!);
+    _musicInit(widget.positionTrack!);
   }
 
   _musicInit(int positionSong) async {
-    isCurrentPlaying.value = true;
-    currentPlaylist.value = widget.listSong;
-    positionCurrentPlaying.value = widget.positionSong;
-    currentlySong = widget.listSong[widget.positionSong!].track?.name;
+    positionCurrentPlaying.value = widget.positionTrack;
+    currentTrack = widget.listTracks[widget.positionTrack!].name;
     isPlaying = true;
     await _player.setAudioSource(AudioSource.uri(
-        Uri.parse("${widget.listSong[positionSong].track?.previewUrl}")));
+        Uri.parse("${widget.listTracks[positionSong].previewUrl}")));
     duration = _player.duration!;
     _player.play();
     _player.positionStream.listen((event) {
@@ -69,8 +66,8 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
     if (duration != Duration.zero && position == duration) {
       skipNextSong();
     }
-    if (currentlySong != widget.listSong[widget.positionSong!].track?.name) {
-      _musicInit(widget.positionSong!);
+    if (currentTrack != widget.listTracks[widget.positionTrack!].name) {
+      _musicInit(widget.positionTrack!);
     }
     return Miniplayer(
       elevation: 4,
@@ -102,7 +99,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                   top: (height - 250 <= 40) ? height - 250 : 40,
                   bottom: (height <= 290) ? 0 : height - 290),
           child: Image.network(
-            '${widget.listSong[widget.positionSong!].track?.album?.images?.first.url}',
+            '${widget.listTracks[widget.positionTrack!].album?.images?.first.url}',
             height: height,
           ),
         ),
@@ -118,7 +115,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
           Row(
             children: [
               Image.network(
-                '${widget.listSong[widget.positionSong!].track?.album?.images?.first.url}',
+                '${widget.listTracks[widget.positionTrack!].album?.images?.first.url}',
                 height: height - 10,
               ),
               Expanded(
@@ -129,7 +126,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        '${widget.listSong[widget.positionSong!].track?.name}',
+                        '${widget.listTracks[widget.positionTrack!].name}',
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontSize: 18,
@@ -137,7 +134,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                         ),
                       ),
                       Text(
-                        "${widget.listSong[widget.positionSong!].track?.artists?.first.name}",
+                        "${widget.listTracks[widget.positionTrack!].artists?.first.name}",
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontSize: 15,
@@ -193,15 +190,15 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
             ),
           ),
           Image.network(
-              '${widget.listSong[widget.positionSong!].track?.album?.images?.first.url}',
-              width: 250,
-              height: 250,
+              '${widget.listTracks[widget.positionTrack!].album?.images?.first.url}',
+              width: 240,
+              height: 240,
               fit: BoxFit.fill),
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              '${widget.listSong[widget.positionSong!].track?.name}',
+              '${widget.listTracks[widget.positionTrack!].name}',
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 fontSize: 20,
@@ -210,7 +207,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
             ),
           ),
           Text(
-            "${widget.listSong[widget.positionSong!].track?.artists?.first.name}",
+            "${widget.listTracks[widget.positionTrack!].artists?.first.name}",
             style: const TextStyle(
               fontSize: 18,
               color: Colors.white70,
@@ -276,41 +273,6 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
             ],
           ),
           const SizedBox(height: 20),
-          Expanded(
-              child: ListView.builder(
-            itemCount: widget.listSong.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                onTap: () {
-                  if (widget.positionSong != index) {
-                    setState(() {
-                      widget.positionSong = index;
-                    });
-                  }
-                },
-                title: Text(
-                  '${widget.listSong[index].track?.album?.name}',
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                ),
-                subtitle: Text(
-                  '${widget.listSong[index].track?.artists?.first.name}',
-                  style: const TextStyle(
-                    color: Colors.white70,
-                    fontSize: 12,
-                  ),
-                ),
-                leading: Image.network(
-                  '${widget.listSong[index].track?.album?.images?.first.url}',
-                  height: 50,
-                  width: 50,
-                ),
-              );
-            },
-          )),
         ],
       ),
     );
@@ -323,10 +285,10 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
         IconButton(
           onPressed: () {
             setState(() {
-              if (widget.positionSong! > 0) {
-                widget.positionSong = widget.positionSong! - 1;
+              if (widget.positionTrack! > 0) {
+                widget.positionTrack = widget.positionTrack! - 1;
               } else {
-                widget.positionSong = widget.listSong.length - 1;
+                widget.positionTrack = widget.listTracks.length - 1;
               }
             });
           },
@@ -385,10 +347,10 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
 
   void skipNextSong() {
     return setState(() {
-      if (widget.positionSong! < (widget.listSong.length - 1)) {
-        widget.positionSong = widget.positionSong! + 1;
+      if (widget.positionTrack! < (widget.listTracks.length - 1)) {
+        widget.positionTrack = widget.positionTrack! + 1;
       } else {
-        widget.positionSong = 0;
+        widget.positionTrack = 0;
       }
     });
   }

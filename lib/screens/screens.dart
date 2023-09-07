@@ -1,7 +1,10 @@
-import 'package:app_music/models/ListSongModel.dart';
+import 'package:app_music/models/search_playlist/SongInPlaylistModel.dart';
 import 'package:app_music/screens/Home.dart';
 import 'package:app_music/screens/Search.dart';
 import 'package:app_music/screens/library.dart';
+import 'package:app_music/screens/profile.dart';
+import 'package:app_music/widgets/search/body_search.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ValueNotifier<bool> isCurrentPlaying = ValueNotifier(false);
@@ -21,6 +24,7 @@ class _ScreensState extends State<Screens> {
     const Home(),
     const Search(),
     const Library(),
+    const Profile(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,23 +45,32 @@ class _ScreensState extends State<Screens> {
         backgroundColor: Colors.black,
         type: BottomNavigationBarType.fixed,
         iconSize: 30,
-        selectedFontSize: 18,
-        showUnselectedLabels: false,
         selectedItemColor: Colors.green,
         unselectedItemColor: Colors.white70,
-        onTap: (index) => setState(() => currentIndex = index),
+        onTap: (index) => setState(() {
+          currentIndex = index;
+          query.value = '';
+        }),
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search_outlined),
+            icon: Icon(CupertinoIcons.search_circle),
+            activeIcon: Icon(CupertinoIcons.search_circle_fill),
             label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.my_library_music_outlined),
+            activeIcon: Icon(Icons.my_library_music),
             label: 'Library',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person_crop_square),
+            activeIcon: Icon(CupertinoIcons.person_crop_square_fill),
+            label: 'Profile',
           )
         ],
       ),

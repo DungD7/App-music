@@ -1,4 +1,4 @@
-class ListSongModel {
+class SongInPlaylistModel {
   bool? collaborative;
   String? description;
   ExternalUrls? externalUrls;
@@ -15,7 +15,7 @@ class ListSongModel {
   String? type;
   String? uri;
 
-  ListSongModel(
+  SongInPlaylistModel(
       {this.collaborative,
       this.description,
       this.externalUrls,
@@ -32,7 +32,7 @@ class ListSongModel {
       this.type,
       this.uri});
 
-  ListSongModel.fromJson(Map<String, dynamic> json) {
+  SongInPlaylistModel.fromJson(Map<String, dynamic> json) {
     collaborative = json['collaborative'];
     description = json['description'];
     externalUrls = json['external_urls'] != null

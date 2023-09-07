@@ -1,8 +1,3 @@
-import 'dart:convert';
-
-import 'package:app_music/models/TokenModel.dart';
-import 'package:http/http.dart' as http;
-
 class TokenSingleton {
   static final TokenSingleton _singleton = TokenSingleton._internal();
 
@@ -16,37 +11,5 @@ class TokenSingleton {
     return _singleton;
   }
 
-  TokenSingleton._internal() {
-    _initializeToken();
-  }
-
-  Future<void> _initializeToken() async {
-    getToken().then((data) {
-      _singleton.token = data!;
-      print('tokenn1: ${_singleton.token}');
-    }).catchError((error) {
-      print('Error fetching token: $error');
-    });
-  }
-
-  Future<String?> getToken() async {
-    final response = await http
-        .post(Uri.parse('https://accounts.spotify.com/api/token'), headers: {
-      "Content-Type": _singleton.contentType,
-    }, body: {
-      'grant_type': _singleton.grantType,
-      'client_id': _singleton.clientID,
-      'client_secret': _singleton.clientSecret
-    });
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      String? tokenUrl;
-      TokenModel tokenModel;
-      tokenModel = TokenModel.fromJson(data);
-      tokenUrl = tokenModel.accessToken;
-      return tokenUrl;
-    } else {
-      throw Exception('Failed to load data');
-    }
-  }
+  TokenSingleton._internal();
 }

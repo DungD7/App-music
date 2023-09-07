@@ -1,22 +1,22 @@
 import 'package:app_music/api/CallApiSpotify.dart';
 import 'package:app_music/models/LibraryModel.dart';
-import 'package:app_music/models/ListSongModel.dart';
+import 'package:app_music/models/search_playlist/SongInPlaylistModel.dart';
 import 'package:app_music/screens/Search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'PlayMusicScreen.dart';
 
-class PlaylistScreen extends StatefulWidget {
+class DetailPlaylistScreen extends StatefulWidget {
   String urlListSong;
-  PlaylistScreen({required this.urlListSong, super.key});
+  DetailPlaylistScreen({required this.urlListSong, super.key});
 
   @override
-  State<PlaylistScreen> createState() => _PlaylistScreenState();
+  State<DetailPlaylistScreen> createState() => _DetailPlaylistScreenState();
 }
 
-class _PlaylistScreenState extends State<PlaylistScreen> {
-  ListSongModel? listSongData;
+class _DetailPlaylistScreenState extends State<DetailPlaylistScreen> {
+  SongInPlaylistModel? listSongData;
   ItemSongs? selectedSong;
   List<ItemSongs> listSong = [];
   int? position;
@@ -88,19 +88,20 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
               alignment: Alignment.topLeft,
               child: Text(
                 'Playlist',
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
           ),
           Text(
-            '${listSongData?.name}',
+            '  ${listSongData?.name}',
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(color: Colors.white, fontSize: 40),
+            style: const TextStyle(
+                color: Colors.green, fontSize: 35, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
           Text(
-            '${listSongData?.owner?.displayName} • ${listSongData?.followers?.total} likes • ${listSongData?.tracks?.items?.length} songs',
-            style: const TextStyle(color: Colors.white, fontSize: 20),
+            '  ${listSongData?.owner?.displayName} • ${listSongData?.followers?.total} likes • ${listSongData?.tracks?.items?.length} songs',
+            style: const TextStyle(color: Colors.white, fontSize: 17),
           ),
           showPlaylist(),
         ],

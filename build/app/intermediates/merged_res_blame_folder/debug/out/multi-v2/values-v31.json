@@ -6,30 +6,6 @@
                 {
                     "source": "D:\\university\\FLUTTER\\AppMusic\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
                     "from": {
-                        "startLines": "3,-1",
-                        "startColumns": "4,-1",
-                        "startOffsets": "173,-1",
-                        "endLines": "9,-1",
-                        "endColumns": "12,-1",
-                        "endOffsets": "623,-1"
-                    },
-                    "to": {
-                        "startLines": "2,9",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,510",
-                        "endLines": "8,11",
-                        "endColumns": "12,12",
-                        "endOffsets": "505,674"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\Admin\\.gradle\\daemon\\7.5\\com.example.app_music.app-mergeDebugResources-20:\\values-v31\\values-v31.xml",
-            "map": [
-                {
-                    "source": "D:\\university\\FLUTTER\\AppMusic\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
-                    "from": {
                         "startLines": "3,16",
                         "startColumns": "4,4",
                         "startOffsets": "173,974",

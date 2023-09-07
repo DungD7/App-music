@@ -1,5 +1,5 @@
 import 'package:app_music/api/CallApiSpotify.dart';
-import 'package:app_music/models/playlistsModel.dart';
+import 'package:app_music/models/search_playlist/PlaylistsModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -50,7 +50,7 @@ class _SuggestionListState extends State<SuggestionList> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 13,
                 itemBuilder: (context, index) {
-                  return ItemMusic(
+                  return ItemPlaylist(
                       items: playlistsData!.playlists!.items![index]);
                 }),
       ),

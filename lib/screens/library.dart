@@ -1,6 +1,6 @@
 import 'package:app_music/models/LibraryModel.dart';
-import 'package:app_music/models/ListSongModel.dart';
-import 'package:app_music/screens/PlayMusicScreen.dart';
+import 'package:app_music/models/search_playlist/SongInPlaylistModel.dart';
+import 'package:app_music/screens/playlist_screens/PlayMusicScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +50,7 @@ class _LibraryState extends State<Library> {
                     fontSize: 28,
                   ),
                 ),
-                const SizedBox(width: 90),
+                const SizedBox(width: 100),
                 IconButton(
                     onPressed: () {
                       String name = 'New playlist';
@@ -102,9 +102,9 @@ class _LibraryState extends State<Library> {
                       );
                     },
                     icon: const Icon(
-                      Icons.add,
-                      size: 40,
-                      color: Colors.white,
+                      Icons.my_library_add_outlined,
+                      size: 35,
+                      color: Colors.green,
                     ))
               ],
             ),
@@ -139,7 +139,7 @@ class _LibraryState extends State<Library> {
                     },
                   );
                 },
-              );
+              ).then((value) => {setState(() {})});
             },
             title: Text(
               displayYourLib[index].name,

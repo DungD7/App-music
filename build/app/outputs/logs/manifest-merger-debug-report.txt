@@ -68,6 +68,7 @@ MERGED from D:\university\FLUTTER\AppMusic\android\app\src\main\AndroidManifest.
 MERGED from [:just_audio] D:\university\FLUTTER\AppMusic\build\just_audio\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:firebase_auth] D:\university\FLUTTER\AppMusic\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:firebase_core] D:\university\FLUTTER\AppMusic\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:sqflite] D:\university\FLUTTER\AppMusic\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] D:\university\FLUTTER\AppMusic\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:audio_session] D:\university\FLUTTER\AppMusic\build\audio_session\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:google_sign_in_android] D:\university\FLUTTER\AppMusic\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
@@ -185,6 +186,8 @@ MERGED from [:firebase_auth] D:\university\FLUTTER\AppMusic\build\firebase_auth\
 MERGED from [:firebase_auth] D:\university\FLUTTER\AppMusic\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] D:\university\FLUTTER\AppMusic\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] D:\university\FLUTTER\AppMusic\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] D:\university\FLUTTER\AppMusic\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] D:\university\FLUTTER\AppMusic\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] D:\university\FLUTTER\AppMusic\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] D:\university\FLUTTER\AppMusic\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:audio_session] D:\university\FLUTTER\AppMusic\build\audio_session\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
