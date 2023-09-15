@@ -4,7 +4,6 @@ import 'package:app_music/models/TokenModel.dart';
 import 'package:app_music/models/search_album/AlbumsModel.dart'
     show AlbumsModel;
 import 'package:app_music/tokenSingleton.dart';
-import 'package:app_music/widgets/search/body_search.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/search_album/tracksInAlbumModel.dart';
@@ -14,6 +13,7 @@ import '../models/search_playlist/SongInPlaylistModel.dart'
     show SongInPlaylistModel;
 import '../models/search_show/ShowsModel.dart' show ShowsModel;
 import '../models/search_track/TracksModel.dart' show TracksModel;
+import '../screens/Search.dart';
 
 class CallApiSpotify {
   static String urlPlaylists = "";

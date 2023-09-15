@@ -1,12 +1,13 @@
 import 'package:app_music/models/LibraryModel.dart';
-import 'package:app_music/widgets/search/body_search.dart';
 import 'package:flutter/material.dart';
 
-import '../models/search_playlist/PlaylistsModel.dart';
-import '../models/search_playlist/SongInPlaylistModel.dart';
-import 'playlist_screens/PlayMusicScreen.dart';
+import '../widgets/album/list_albums.dart';
+import '../widgets/list_artists.dart';
+import '../widgets/list_playlists.dart';
+import '../widgets/list_tracks.dart';
 
 ValueNotifier<LibraryModel> yourLib = ValueNotifier(LibraryModel(library: []));
+ValueNotifier<String> query = ValueNotifier<String>('');
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -15,18 +16,49 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  PlaylistsModel? playlistsData;
-  ItemSongs? selectedSong;
-  List<ItemSongs> listSong = [];
-  List<ItemSongs> displayList = [];
-  int? position;
+  // PlaylistsModel? playlistsData;
+  // ItemSongs? selectedSong;
+  // List<ItemSongs> listSong = [];
+  // List<ItemSongs> displayList = [];
+  // int? position;
+
+  int currentIndex = 0;
+  List<Widget> body = [
+    Container(),
+    Container(),
+    Container(),
+    Container(),
+    Container(),
+  ];
+
+  void updateBodyScreens(String query) {
+    body = [
+      Container(),
+      ListTracks(
+          urlTracks:
+              'https://api.spotify.com/v1/search?q=$query&type=track&market=vn&offset=0&limit=50'),
+      ListPlaylists(
+          urlPlaylists:
+              'https://api.spotify.com/v1/search?q=$query&type=playlist&market=vn&offset=0&limit=50'),
+      ListArtists(
+          urlArtists:
+              'https://api.spotify.com/v1/search?q=$query&type=artist&market=vn&offset=0&limit=50'),
+      ListAlbums(
+          urlAlbums:
+              'https://api.spotify.com/v1/search?q=$query&type=album&market=vn&offset=0&limit=50'),
+    ];
+  }
 
   void updateList(String value) {
     query.value = value;
     setState(() {
-      debugPrint(query.value);
+      updateBodyScreens(value);
+      currentIndex = 0;
     });
   }
+
+  Color bgColor = Colors.grey.shade800;
+  Color txtColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +83,16 @@ class _SearchState extends State<Search> {
               search(),
               const SizedBox(height: 5),
               // Expanded(child: showListSongs())
-              const Expanded(child: BodySearch())
+              bodySearch(),
             ],
           ),
         ),
-        (selectedSong == null)
-            ? Container()
-            : PlayMusicScreen(
-                //selectedSong: selectedSong,
-                positionSong: position,
-                listSong: displayList)
+        // (selectedSong == null)
+        //     ? Container()
+        //     : PlayMusicScreen(
+        //         //selectedSong: selectedSong,
+        //         positionSong: position,
+        //         listSong: displayList)
       ],
     ));
   }
@@ -84,6 +116,115 @@ class _SearchState extends State<Search> {
         style: const TextStyle(color: Colors.white, fontSize: 15),
       ),
     );
+  }
+
+  Widget bodySearch() {
+    return Expanded(
+        child: Column(
+      children: [
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SizedBox(
+                height: 35,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            currentIndex == 1 ? Colors.green : bgColor)),
+                    child: Text(
+                      'Track',
+                      style: TextStyle(
+                        color: currentIndex == 1 ? Colors.black : txtColor,
+                        fontSize: 13,
+                      ),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        currentIndex = 1;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 35,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            currentIndex == 2 ? Colors.green : bgColor)),
+                    child: Text(
+                      'Playlist',
+                      style: TextStyle(
+                        color: currentIndex == 2 ? Colors.black : txtColor,
+                        fontSize: 13,
+                      ),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        currentIndex = 2;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 35,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            currentIndex == 3 ? Colors.green : bgColor)),
+                    child: Text(
+                      'Artist',
+                      style: TextStyle(
+                        color: currentIndex == 3 ? Colors.black : txtColor,
+                        fontSize: 13,
+                      ),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        currentIndex = 3;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 35,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            currentIndex == 4 ? Colors.green : bgColor)),
+                    child: Text(
+                      'Album',
+                      style: TextStyle(
+                        color: currentIndex == 4 ? Colors.black : txtColor,
+                        fontSize: 13,
+                      ),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        currentIndex = 4;
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 20),
+        Expanded(child: body[currentIndex]),
+      ],
+    ));
   }
 
   // addListSongs() {

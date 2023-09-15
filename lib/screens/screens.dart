@@ -3,7 +3,6 @@ import 'package:app_music/screens/Home.dart';
 import 'package:app_music/screens/Search.dart';
 import 'package:app_music/screens/library.dart';
 import 'package:app_music/screens/profile.dart';
-import 'package:app_music/widgets/search/body_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
