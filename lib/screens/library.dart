@@ -26,9 +26,10 @@ class _LibraryState extends State<Library> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 20),
             Row(
               children: [
-                const SizedBox(width: 10),
+                const SizedBox(width: 20),
                 Container(
                   width: 50,
                   height: 50,
@@ -72,7 +73,7 @@ class _LibraryState extends State<Library> {
                                 hintText: name,
                               ),
                             ),
-                            actions: <Widget>[
+                            actions: [
                               Center(
                                 child: TextButton(
                                   style: ButtonStyle(
@@ -141,12 +142,58 @@ class _LibraryState extends State<Library> {
                 },
               ).then((value) => {setState(() {})});
             },
-            title: Text(
-              displayYourLib[index].name,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 17,
+            title: InkWell(
+              onTap: () {
+                String name = 'New playlist';
+                showDialog(
+                  context: context,
+                  builder: (BuildContext dialogContext) {
+                    return AlertDialog(
+                      title: const Text(
+                        'Rename your playlist',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w400),
+                      ),
+                      content: TextField(
+                        onChanged: (value) {
+                          name = value;
+                        },
+                        decoration: InputDecoration(
+                          hintText: name,
+                        ),
+                      ),
+                      actions: [
+                        Center(
+                          child: TextButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.green)),
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                              ),
+                            ),
+                            onPressed: () {
+                              displayYourLib[index].name = name;
+                              Navigator.pop(dialogContext);
+                              setState(() {}); // Dismiss alert dialog
+                            },
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Text(
+                displayYourLib[index].name,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                ),
               ),
             ),
             subtitle: displayYourLib[index].playlistYourLib.length <= 1

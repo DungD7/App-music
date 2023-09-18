@@ -46,15 +46,17 @@ class _HomeState extends State<Home> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
+              const SizedBox(height: 10),
               Row(
                 children: [
                   const SizedBox(width: 10),
                   Text(
                     '$greeting',
                     style: const TextStyle(
-                        color: Colors.green,
-                        fontSize: 27,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.green,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
